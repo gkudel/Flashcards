@@ -25,7 +25,7 @@ namespace Flashcards.Areas.Admin.Controllers
         // GET: /Admin/CategoryGroup/Details/5
         public async Task<ActionResult> Details(int? id)
         {
-            if (id == null)
+            if (!id.HasValue)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -48,22 +48,28 @@ namespace Flashcards.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include="Id,Description")] CategoryGroup categorygroup)
+        public async Task<ActionResult> Create([Bind(Include="Description")] CategoryGroup categorygroup)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.CategoryGroups.Add(categorygroup);
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.CategoryGroups.Add(categorygroup);
+                    await db.SaveChangesAsync();
+                    return RedirectToAction("Index");
+                }
             }
-
+            catch (DataException)
+            {
+                ModelState.AddModelError("", " Unable to save changes. Try again, and if the problem persists see your system administrator.");
+            }
             return View(categorygroup);
         }
 
         // GET: /Admin/CategoryGroup/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
-            if (id == null)
+            if (!id.HasValue)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -78,25 +84,43 @@ namespace Flashcards.Areas.Admin.Controllers
         // POST: /Admin/CategoryGroup/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [HttpPost, ActionName("Edit")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include="Id,Description")] CategoryGroup categorygroup)
+        public async Task<ActionResult> EditPost(int? id)
         {
-            if (ModelState.IsValid)
+            if (!id.HasValue)
             {
-                db.Entry(categorygroup).State = EntityState.Modified;
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            return View(categorygroup);
+            var categoryGroupsToUpdate = db.CategoryGroups.Find(id);
+
+            if (TryUpdateModel(categoryGroupsToUpdate, "",
+                new string[] { "Description" }))
+            {
+                try
+                {
+                    await db.SaveChangesAsync();
+                    return RedirectToAction("Index");
+                }
+                catch (DataException /* dex */)
+                {
+                    //Log the error (uncomment dex variable name and add a line here to write a log.
+                    ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
+                }
+            }
+            return View(categoryGroupsToUpdate);
         }
 
         // GET: /Admin/CategoryGroup/Delete/5
-        public async Task<ActionResult> Delete(int? id)
+        public async Task<ActionResult> Delete(int? id, bool? saveChangesError)
         {
-            if (id == null)
+            if (!id.HasValue)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            if (saveChangesError.GetValueOrDefault())
+            {
+                ViewBag.ErrorMessage = "Delete failed. Try again, and if the problem persists see your system administrator.";
             }
             CategoryGroup categorygroup = await db.CategoryGroups.FindAsync(id);
             if (categorygroup == null)
@@ -111,9 +135,16 @@ namespace Flashcards.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            CategoryGroup categorygroup = await db.CategoryGroups.FindAsync(id);
-            db.CategoryGroups.Remove(categorygroup);
-            await db.SaveChangesAsync();
+            try
+            {
+                CategoryGroup categorygroup = await db.CategoryGroups.FindAsync(id);
+                db.CategoryGroups.Remove(categorygroup);
+                await db.SaveChangesAsync();
+            }
+            catch (DataException)
+            {
+                return RedirectToAction("Delete", new { id = id, saveChangesError = true });
+            }
             return RedirectToAction("Index");
         }
 

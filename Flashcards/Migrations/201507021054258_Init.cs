@@ -39,23 +39,23 @@ namespace Flashcards.Migrations
                 "dbo.CategoryGroupCategory",
                 c => new
                     {
-                        CategoryGroup_Id = c.Int(nullable: false),
-                        Category_Id = c.Int(nullable: false),
+                        GroupId = c.Int(nullable: false),
+                        CategoryId = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => new { t.CategoryGroup_Id, t.Category_Id })
-                .ForeignKey("dbo.CategoryGroup", t => t.CategoryGroup_Id, cascadeDelete: true)
-                .ForeignKey("dbo.Category", t => t.Category_Id, cascadeDelete: true)
-                .Index(t => t.CategoryGroup_Id)
-                .Index(t => t.Category_Id);
+                .PrimaryKey(t => new { t.GroupId, t.CategoryId })
+                .ForeignKey("dbo.CategoryGroup", t => t.GroupId, cascadeDelete: true)
+                .ForeignKey("dbo.Category", t => t.CategoryId, cascadeDelete: true)
+                .Index(t => t.GroupId)
+                .Index(t => t.CategoryId);
             
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.CategoryGroupCategory", "Category_Id", "dbo.Category");
-            DropForeignKey("dbo.CategoryGroupCategory", "CategoryGroup_Id", "dbo.CategoryGroup");
-            DropIndex("dbo.CategoryGroupCategory", new[] { "Category_Id" });
-            DropIndex("dbo.CategoryGroupCategory", new[] { "CategoryGroup_Id" });
+            DropForeignKey("dbo.CategoryGroupCategory", "CategoryId", "dbo.Category");
+            DropForeignKey("dbo.CategoryGroupCategory", "GroupId", "dbo.CategoryGroup");
+            DropIndex("dbo.CategoryGroupCategory", new[] { "CategoryId" });
+            DropIndex("dbo.CategoryGroupCategory", new[] { "GroupId" });
             DropTable("dbo.CategoryGroupCategory");
             DropTable("dbo.Language");
             DropTable("dbo.CategoryGroup");

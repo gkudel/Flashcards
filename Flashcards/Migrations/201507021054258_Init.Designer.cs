@@ -13,7 +13,7 @@ namespace Flashcards.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201507020731461_Init"; }
+            get { return "201507021054258_Init"; }
         }
         
         string IMigrationMetadata.Source

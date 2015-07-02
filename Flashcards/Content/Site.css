@@ -30,3 +30,7 @@ textarea {
     color: transparent !important;
     width: 50px;
 }
+
+.hover {
+    cursor: pointer;
+}

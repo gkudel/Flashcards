@@ -22,6 +22,12 @@ namespace Flashcards.DAL
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+
+            modelBuilder.Entity<CategoryGroup>().HasMany(g => g.Categories)
+                .WithMany(c => c.Groups)
+                .Map(t => t.MapLeftKey("GroupId")
+                    .MapRightKey("CategoryId")
+                    .ToTable("CategoryGroupCategory"));
         }
     }
 }

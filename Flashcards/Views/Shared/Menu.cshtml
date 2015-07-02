@@ -1,7 +1,10 @@
 ﻿<div class="navbar-collapse collapse">
     <ul class="nav navbar-nav">
         <li>@Html.ActionLink("Home", "Index", "Home", new { }, new { @class = "topnav_home" })</li>
+        <li>@Html.ActionLink("Tests", "Index", "Test")</li>
+        <li>@Html.ActionLink("Test History", "Index", "History")</li>
         <li>@Html.ActionLink("Admin", "Index", "Home", new { Area = "Admin" }, new { })</li>
+        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
         <li>@Html.ActionLink("About", "About", "Home")</li>
     </ul>
 </div>

@@ -141,9 +141,9 @@
     </Compile>
     <Compile Include="Logging\ILogger.cs" />
     <Compile Include="Logging\Logger.cs" />
-    <Compile Include="Migrations\201507020731461_Init.cs" />
-    <Compile Include="Migrations\201507020731461_Init.Designer.cs">
-      <DependentUpon>201507020731461_Init.cs</DependentUpon>
+    <Compile Include="Migrations\201507021054258_Init.cs" />
+    <Compile Include="Migrations\201507021054258_Init.Designer.cs">
+      <DependentUpon>201507021054258_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -183,8 +183,11 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\CategoryGroup.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -215,8 +218,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201507020731461_Init.resx">
-      <DependentUpon>201507020731461_Init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201507021054258_Init.resx">
+      <DependentUpon>201507021054258_Init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
