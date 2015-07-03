@@ -12,7 +12,7 @@ namespace Flashcards.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Description = c.String(maxLength: 30),
+                        Description = c.String(nullable: false, maxLength: 30),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -21,7 +21,7 @@ namespace Flashcards.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Description = c.String(maxLength: 30),
+                        Description = c.String(nullable: false, maxLength: 30),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -30,7 +30,7 @@ namespace Flashcards.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Code = c.String(maxLength: 3),
+                        Code = c.String(nullable: false, maxLength: 3),
                         Description = c.String(maxLength: 30),
                     })
                 .PrimaryKey(t => t.Id);

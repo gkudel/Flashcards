@@ -11,7 +11,8 @@ namespace Flashcards.Areas.Admin.Models
     {
         public int Id { get; set; }
 
-        [StringLength(30, MinimumLength=1)]
+        [Required]
+        [StringLength(30,  MinimumLength=1)]        
         [Remote("ValidateCategory", "Validator", ErrorMessage = "The field Code must be unique", AdditionalFields = "Id")]
         public string Description { get; set; }
 

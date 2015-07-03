@@ -12,10 +12,12 @@ namespace Flashcards.Areas.Admin.Models
     {
         public int Id { get; set; }
 
+        [Required]
         [StringLength(3, MinimumLength=1)]
         [Remote("ValidateLanguageCode", "Validator", ErrorMessage = "The field Code must be unique", AdditionalFields = "Id")]
         public string Code { get; set; }
 
+        [Required]
         [StringLength(30, MinimumLength = 1)]
         public string Description { get; set; } 
     }

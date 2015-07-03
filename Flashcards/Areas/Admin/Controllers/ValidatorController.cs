@@ -35,7 +35,19 @@ namespace Flashcards.Areas.Admin.Controllers
             {
                 return Json(db.CategoryGroups.FirstOrDefault(l => l.Description == description) == null, JsonRequestBehavior.AllowGet);
             }
-        }        
+        }
+
+        public ActionResult ValidateCategory(string description, int? id)
+        {
+            if (id.HasValue)
+            {
+                return Json(db.Categories.FirstOrDefault(l => l.Id != id && l.Description == description) == null, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(db.Categories.FirstOrDefault(l => l.Description == description) == null, JsonRequestBehavior.AllowGet);
+            }
+        }             
 
         protected override void Dispose(bool disposing)
         {

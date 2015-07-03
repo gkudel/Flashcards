@@ -7,13 +7,13 @@ namespace Flashcards.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class Init : IMigrationMetadata
+    public sealed partial class Required : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Init));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Required));
         
         string IMigrationMetadata.Id
         {
-            get { return "201507021054258_Init"; }
+            get { return "201507030933488_Required"; }
         }
         
         string IMigrationMetadata.Source

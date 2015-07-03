@@ -1,15 +1,15 @@
-﻿@model IEnumerable<Flashcards.Areas.Admin.Models.CategoryGroup>
+﻿@model IEnumerable<Flashcards.Areas.Admin.Models.Category>
 
 @{
-    ViewBag.Title = "Groupes of Categories";
+    ViewBag.Title = "Categories";
 }
 
-<h2>Groups of catagories</h2>
+<h2>Categories</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table" id="CategoryGroupGrid">
+<table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Description)
@@ -18,7 +18,7 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr id="Row_@item.Id">
+    <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Description)
         </td>
@@ -31,8 +31,3 @@
 }
 
 </table>
-
-
-@section Scripts {
-    @Scripts.Render("~/bundles/categorygroup")
-}

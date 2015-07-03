@@ -125,6 +125,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Browser\BrowserProvider.cs" />
+    <Compile Include="Areas\Admin\Controllers\BrowserController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryGroupController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\LanguageController.cs" />
@@ -141,9 +144,13 @@
     </Compile>
     <Compile Include="Logging\ILogger.cs" />
     <Compile Include="Logging\Logger.cs" />
-    <Compile Include="Migrations\201507021054258_Init.cs" />
-    <Compile Include="Migrations\201507021054258_Init.Designer.cs">
-      <DependentUpon>201507021054258_Init.cs</DependentUpon>
+    <Compile Include="Migrations\201507030932364_Init.cs" />
+    <Compile Include="Migrations\201507030932364_Init.Designer.cs">
+      <DependentUpon>201507030932364_Init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507030933488_Required.cs" />
+    <Compile Include="Migrations\201507030933488_Required.Designer.cs">
+      <DependentUpon>201507030933488_Required.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -172,7 +179,14 @@
     <Content Include="Areas\Admin\Views\CategoryGroup\Details.cshtml" />
     <Content Include="Areas\Admin\Views\CategoryGroup\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\CategoryGroup\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\CategoryFooter.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\browser.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -183,7 +197,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\CategoryGroup.js" />
+    <Content Include="Scripts\category-group.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -218,8 +232,11 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201507021054258_Init.resx">
-      <DependentUpon>201507021054258_Init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201507030932364_Init.resx">
+      <DependentUpon>201507030932364_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507030933488_Required.resx">
+      <DependentUpon>201507030933488_Required.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
