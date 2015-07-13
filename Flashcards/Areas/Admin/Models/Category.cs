@@ -17,5 +17,6 @@ namespace Flashcards.Areas.Admin.Models
         public string Description { get; set; }
 
         public virtual ICollection<CategoryGroup> Groups { get; set; }
+        public virtual ICollection<Word> Words { get; set; }
     }
 }

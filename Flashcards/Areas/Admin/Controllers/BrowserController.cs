@@ -11,9 +11,9 @@ namespace Flashcards.Areas.Admin.Controllers
     public class BrowserController : Controller
     {
         // GET: /Admin/CategoryGroup/
-        public JsonResult ReadBrowser(string id)
+        public ActionResult ReadBrowser(string id)
         {
-            return Json(BrowserProvider.GetBrowser(id), JsonRequestBehavior.AllowGet);
+            return View(id, BrowserProvider.GetBrowser(id));
         }
 	}
 }

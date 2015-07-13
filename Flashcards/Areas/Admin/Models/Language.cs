@@ -19,6 +19,8 @@ namespace Flashcards.Areas.Admin.Models
 
         [Required]
         [StringLength(30, MinimumLength = 1)]
-        public string Description { get; set; } 
+        public string Description { get; set; }
+
+        public virtual ICollection<Translation> Translations { get; set; }
     }
 }

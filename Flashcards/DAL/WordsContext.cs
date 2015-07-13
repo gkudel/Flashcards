@@ -15,9 +15,10 @@ namespace Flashcards.DAL
         { }
 
         public DbSet<Language> Language { get; set; }
-        public DbSet<CategoryGroup> CategoryGroups { get; set; }
+        public DbSet<CategoryGroup> CategoryGroups { get; set; }        
         public DbSet<Category> Categories { get; set; }
-
+        public DbSet<Word> Words { get; set; }
+        public DbSet<Translation> Translations { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -28,6 +29,13 @@ namespace Flashcards.DAL
                 .Map(t => t.MapLeftKey("GroupId")
                     .MapRightKey("CategoryId")
                     .ToTable("CategoryGroupCategory"));
+
+            
+            modelBuilder.Entity<Word>().HasMany(g => g.Categories)
+                .WithMany(c => c.Words)
+                .Map(t => t.MapLeftKey("WordId")
+                    .MapRightKey("CategoryId")
+                    .ToTable("WordCategory"));
         }
     }
 }

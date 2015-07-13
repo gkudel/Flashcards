@@ -132,11 +132,13 @@
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\LanguageController.cs" />
     <Compile Include="Areas\Admin\Controllers\ValidatorController.cs" />
+    <Compile Include="Areas\Admin\Controllers\WordController.cs" />
     <Compile Include="Areas\Admin\DAL\AdminContext.cs" />
-    <Compile Include="Areas\Admin\DAL\WordsInitializer.cs" />
     <Compile Include="Areas\Admin\Models\Category.cs" />
     <Compile Include="Areas\Admin\Models\CategoryGroup.cs" />
     <Compile Include="Areas\Admin\Models\Language.cs" />
+    <Compile Include="Areas\Admin\Models\Translation.cs" />
+    <Compile Include="Areas\Admin\Models\Word.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DAL\WordsContext.cs" />
     <Compile Include="Global.asax.cs">
@@ -151,6 +153,14 @@
     <Compile Include="Migrations\201507030933488_Required.cs" />
     <Compile Include="Migrations\201507030933488_Required.Designer.cs">
       <DependentUpon>201507030933488_Required.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507061119496_Word.cs" />
+    <Compile Include="Migrations\201507061119496_Word.Designer.cs">
+      <DependentUpon>201507061119496_Word.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507061135152_Translation.cs" />
+    <Compile Include="Migrations\201507061135152_Translation.Designer.cs">
+      <DependentUpon>201507061135152_Translation.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -185,6 +195,12 @@
     <Content Include="Areas\Admin\Views\Category\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Category\CategoryFooter.cshtml" />
+    <Content Include="Areas\Admin\Views\Browser\CategoryGroup.cshtml" />
+    <Content Include="Areas\Admin\Views\Word\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Word\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Word\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Word\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Word\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\browser.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -237,6 +253,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201507030933488_Required.resx">
       <DependentUpon>201507030933488_Required.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507061119496_Word.resx">
+      <DependentUpon>201507061119496_Word.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507061135152_Translation.resx">
+      <DependentUpon>201507061135152_Translation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

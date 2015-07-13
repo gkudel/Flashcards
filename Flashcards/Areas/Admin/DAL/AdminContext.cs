@@ -17,11 +17,7 @@ namespace Flashcards.Areas.Admin.DAL
         public DbSet<Language> Language { get; set; }
         public DbSet<CategoryGroup> CategoryGroups { get; set; }
         public DbSet<Category> Categories { get; set; }
-
-
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-        }
+        public DbSet<Word> Words { get; set; }
+        public DbSet<Translation> Translations { get; set; }
     }
 }

@@ -8,13 +8,13 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Flashcards.Areas.Admin.Models;
-using Flashcards.DAL;
+using Flashcards.Areas.Admin.DAL;
 
 namespace Flashcards.Areas.Admin.Controllers
 {
     public class CategoryController : Controller
     {
-        private WordsContext db = new WordsContext();
+        private AdminContext db = new AdminContext();
 
         // GET: /Admin/Category/
         public async Task<ActionResult> Index()

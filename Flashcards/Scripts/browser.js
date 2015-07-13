@@ -1,9 +1,9 @@
 ﻿$(function () {
     $("button[data-setup-browser]").on({
         "click": function (event) {
-            var element = $(this);
+            var e = $(this);
             $.getJSON("/Admin/Browser/ReadBrowser/" + $(this).attr("data-setup-browser"), function (data) {                
-                var grid = $(element.attr("data-setup-browser-grid"));
+                var grid = $(e.attr("data-setup-browser-grid"));
                 if (grid) {
                     var table = null;
                     var body = null;
